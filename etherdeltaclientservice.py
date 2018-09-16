@@ -198,7 +198,7 @@ class EtherDeltaClientService:
 
     def printAnyOrderBook(self, sells, buys):
         ordersPerSide = 10
-        topsells = reversed(sells[0:ordersPerSide])
+        topsells = reversed(sells[0:orderersPerSide])
         topbuys = buys[0:ordersPerSide]
         for sell in topsells:
             print(str(sell['price']) + " " + str(round(float(sell['ethAvailableVolume']), 3)))
@@ -446,7 +446,7 @@ class EtherDeltaClientService:
         self.token = Web3.toChecksumAddress(token)
 
         # Load the ABI of the ERC20 token
-        with open('../contracts/token.json', 'r') as token_abi_definition:
+        with open('contracts/token.json', 'r') as token_abi_definition:
             token_abi = json.load(token_abi_definition)
         self.contractToken = web3.eth.contract(address=self.token, abi=token_abi)
 
@@ -465,6 +465,6 @@ class EtherDeltaClientService:
         addressEtherDelta = Web3.toChecksumAddress(addressEtherDelta)
 
         # Load the ABI of the EtherDelta contract
-        with open('../contracts/etherdelta.json', 'r') as abi_definition:
+        with open('contracts/etherdelta.json', 'r') as abi_definition:
             abiEtherDelta = json.load(abi_definition)
         self.contractEtherDelta = web3.eth.contract(address=addressEtherDelta, abi=abiEtherDelta)

@@ -38,13 +38,13 @@ def calculate_profit(coin):
 		while sell_ratio < len(sell_ratios):
 			if (buy_ratios[buy_ratio] * 1.003) < (sell_ratios[sell_ratio] * .997):
 				if buy_amounts[buy_ratio] < sell_amounts[sell_ratio]:
-					print "Buy " + str(buy_amounts[buy_ratio]) + " " + coin + " for " + str(buy_ratios[buy_ratio] * buy_amounts[buy_ratio] * 1.003) + " ETH and sell for " + str(sell_ratios[sell_ratio] * buy_amounts[buy_ratio] * .997) + " ETH"
+					print ("Buy " + str(buy_amounts[buy_ratio]) + " " + coin + " for " + str(buy_ratios[buy_ratio] * buy_amounts[buy_ratio] * 1.003) + " ETH and sell for " + str(sell_ratios[sell_ratio] * buy_amounts[buy_ratio] * .997) + " ETH")
 					profits += ((sell_ratios[sell_ratio] * buy_amounts[buy_ratio] * 1.003) - (buy_ratios[buy_ratio] * buy_amounts[buy_ratio]) * .997)
 					sell_amounts[sell_ratio] -= buy_amounts[buy_ratio]
 					break
 				else:
-					print "Buy " + str(sell_amounts[sell_ratio]) + " " + coin + " for " + str(buy_ratios[buy_ratio] * sell_amounts[sell_ratio] * 1.003) + " ETH and sell for " + str(sell_ratios[sell_ratio] * sell_amounts[sell_ratio] * .997) + " ETH"
-					profits += ((sell_ratios[sell_ratio] * sell_amounts[sell_ratio] * 1.003) - (buy_ratios[buy_ratio] * sell_amounts[sell_ratio]) * .997s)
+					print ("Buy " + str(sell_amounts[sell_ratio]) + " " + coin + " for " + str(buy_ratios[buy_ratio] * sell_amounts[sell_ratio] * 1.003) + " ETH and sell for " + str(sell_ratios[sell_ratio] * sell_amounts[sell_ratio] * .997) + " ETH")
+					profits += ((sell_ratios[sell_ratio] * sell_amounts[sell_ratio] * 1.003) - (buy_ratios[buy_ratio] * sell_amounts[sell_ratio]) * .997)
 					buy_amounts[buy_ratio] -= sell_amounts[sell_ratio]
 					del sell_ratios[sell_ratio]	
 					del sell_amounts[sell_ratio]
@@ -52,12 +52,13 @@ def calculate_profit(coin):
 				sell_ratio += 1
 		buy_ratio -= 1
 					
-	print coin + ": Your profit is " + str(profits) + " ETH"
-	return profits
+	print (coin + ": Your profit is " + str(profits) + " ETH")
 	driver.close()
+	return profits
+
 
 coins = ['DRGN', 'PPT', 'LEND', 'VERI', 'EOS', 'COB', 'PPP', 'BLUE', 'OMG', 'GRX', 'RDN', 'PLR', 'AION', 'SALT']
 total_profit = 0
 for coin in coins:
 	total_profit += calculate_profit(coin)
-print "Your total profit is: " + str(total_profit)
+print ("Your total profit is: " + str(total_profit))
